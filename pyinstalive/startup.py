@@ -52,13 +52,11 @@ def validate_inputs(config, args, unknown_args):
             logger.separator()
             return False
 
-        if helpers.bool_str_parse(config.get('pyinstalive', 'log_to_file')) == "Invalid":
+        try:
+            pil.log_to_file = config.getboolean('pyinstalive', 'log_to_file')
+        except ValueError:
             pil.log_to_file = True
             error_arr.append(['log_to_file', 'True'])
-        elif helpers.bool_str_parse(config.get('pyinstalive', 'log_to_file')):
-            pil.log_to_file = True
-        else:
-            pil.log_to_file = False
 
         logger.banner()
 
@@ -97,79 +95,64 @@ def validate_inputs(config, args, unknown_args):
         if args.dlpath:
             pil.dl_path = args.dlpath
 
-        if helpers.bool_str_parse(config.get('pyinstalive', 'show_cookie_expiry')) == "Invalid":
+        try:
+            pil.show_cookie_expiry = config.getboolean('pyinstalive', 'show_cookie_expiry')
+        except ValueError:
             pil.show_cookie_expiry = False
             error_arr.append(['show_cookie_expiry', 'False'])
-        elif helpers.bool_str_parse(config.get('pyinstalive', 'show_cookie_expiry')):
-            pil.show_cookie_expiry = True
-        else:
-            pil.show_cookie_expiry = False
 
-        if helpers.bool_str_parse(config.get('pyinstalive', 'verbose')) == "Invalid":
+        try:
+            pil.verbose = config.getboolean('pyinstalive', 'verbose')
+        except ValueError:
             pil.verbose = False
             error_arr.append(['verbose', 'False'])
-        elif helpers.bool_str_parse(config.get('pyinstalive', 'verbose')):
-            pil.verbose = True
-        else:
-            pil.verbose = False
 
-        if helpers.bool_str_parse(config.get('pyinstalive', 'skip_merge')) == "Invalid":
+        try:
+            pil.skip_merge = config.getboolean('pyinstalive', 'skip_merge')
+        except ValueError:
             pil.skip_merge = False
             error_arr.append(['skip_merge', 'False'])
-        elif helpers.bool_str_parse(config.get('pyinstalive', 'skip_merge')):
-            pil.skip_merge = True
-        else:
-            pil.skip_merge = False
 
-        if helpers.bool_str_parse(config.get('pyinstalive', 'use_locks')) == "Invalid":
+        try:
+            pil.use_locks = config.getboolean('pyinstalive', 'use_locks')
+        except ValueError:
             pil.use_locks = False
             error_arr.append(['use_locks', 'False'])
-        elif helpers.bool_str_parse(config.get('pyinstalive', 'use_locks')):
-            pil.use_locks = True
-        else:
-            pil.use_locks = False
 
-        if helpers.bool_str_parse(config.get('pyinstalive', 'clear_temp_files')) == "Invalid":
+        try:
+            pil.clear_temp_files = config.getboolean('pyinstalive', 'clear_temp_files')
+        except ValueError:
             pil.clear_temp_files = False
             error_arr.append(['clear_temp_files', 'False'])
-        elif helpers.bool_str_parse(config.get('pyinstalive', 'clear_temp_files')):
-            pil.clear_temp_files = True
-        else:
-            pil.clear_temp_files = False
 
-        if helpers.bool_str_parse(config.get('pyinstalive', 'do_heartbeat')) == "Invalid":
+        try:
+            pil.do_heartbeat = config.getboolean('pyinstalive', 'do_heartbeat')
+        except ValueError:
             pil.do_heartbeat = True
             error_arr.append(['do_heartbeat', 'True'])
-        if helpers.bool_str_parse(config.get('pyinstalive', 'do_heartbeat')):
-            pil.do_heartbeat = True
-        if args.noheartbeat or not helpers.bool_str_parse(config.get('pyinstalive', 'do_heartbeat')):
+
+        if args.noheartbeat or not pil.do_heartbeat:
             pil.do_heartbeat = False
             logger.warn("Getting livestream heartbeat is disabled, this may cause degraded performance.")
             logger.separator()
 
-        if not args.nolives and helpers.bool_str_parse(config.get('pyinstalive', 'download_lives')) == "Invalid":
+        try:
+            pil.dl_lives = config.getboolean('pyinstalive', 'download_lives')
+        except ValueError:
             pil.dl_lives = True
             error_arr.append(['download_lives', 'True'])
-        elif helpers.bool_str_parse(config.get('pyinstalive', 'download_lives')):
-            pil.dl_lives = True
-        else:
-            pil.dl_lives = False
 
-        if not args.noreplays and helpers.bool_str_parse(config.get('pyinstalive', 'download_replays')) == "Invalid":
+        try:
+            pil.dl_replays = config.getboolean('pyinstalive', 'download_replays')
+        except ValueError:
             pil.dl_replays = True
             error_arr.append(['download_replays', 'True'])
-        elif helpers.bool_str_parse(config.get('pyinstalive', 'download_replays')):
-            pil.dl_replays = True
-        else:
-            pil.dl_replays = False
 
-        if helpers.bool_str_parse(config.get('pyinstalive', 'download_comments')) == "Invalid":
+        try:
+            pil.dl_comments = config.getboolean('pyinstalive', 'download_comments')
+        except ValueError:
             pil.dl_comments = True
             error_arr.append(['download_comments', 'True'])
-        elif helpers.bool_str_parse(config.get('pyinstalive', 'download_comments')):
-            pil.dl_comments = True
-        else:
-            pil.dl_comments = False
 
         if args.nolives:
             pil.dl_lives = False

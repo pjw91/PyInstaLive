@@ -51,15 +51,6 @@ def run_command(command):
         return str(e)
 
 
-def bool_str_parse(bool_str):
-    if bool_str.lower() in ["true", "yes", "y", "1"]:
-        return True
-    elif bool_str.lower() in ["false", "no", "n", "0"]:
-        return False
-    else:
-        return "Invalid"
-
-
 def check_if_guesting():
     try:
         broadcast_guest = pil.livestream_obj.get('cobroadcasters', {})[0].get('username')
