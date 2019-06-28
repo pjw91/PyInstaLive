@@ -90,8 +90,6 @@ def validate_inputs(config, args, unknown_args):
         pil.run_at_start = config.get('pyinstalive', 'run_at_start')
         pil.run_at_finish = config.get('pyinstalive', 'run_at_finish')
         pil.ffmpeg_path = config.get('pyinstalive', 'ffmpeg_path')
-        pil.verbose = config.get('pyinstalive', 'verbose')
-        pil.skip_merge = config.get('pyinstalive', 'skip_merge')
         pil.args = args
         pil.config = config
         pil.proxy = config.get('pyinstalive', 'proxy')
@@ -203,10 +201,10 @@ def validate_inputs(config, args, unknown_args):
                 logger.separator()
                 return False
 
-        if not pil.ig_user or not len(pil.ig_user):
+        if not pil.ig_user:
             raise Exception("Invalid value for 'username'. This value is required.")
 
-        if not pil.ig_pass or not len(pil.ig_pass):
+        if not pil.ig_pass:
             raise Exception("Invalid value for 'password'. This value is required.")
 
         if not pil.dl_path.endswith('/'):
