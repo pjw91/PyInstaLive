@@ -99,12 +99,8 @@ def clean_download_dir():
     lock_count = 0
     try:
         logger.info('Cleaning up temporary files and folders.')
-        if Constants.PYTHON_VER[0] == "2":
-            directories = (os.walk(pil.dl_path).next()[1])
-            files = (os.walk(pil.dl_path).next()[2])
-        else:
-            directories = (os.walk(pil.dl_path).__next__()[1])
-            files = (os.walk(pil.dl_path).__next__()[2])
+        directories = next(os.walk(pil.dl_path))[1]
+        files = next(os.walk(pil.dl_path))[2]
 
         for directory in directories:
             if directory.endswith('_downloads'):
