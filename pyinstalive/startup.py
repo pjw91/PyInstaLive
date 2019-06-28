@@ -6,7 +6,7 @@ import platform
 import subprocess
 
 try:
-    import urlparse
+    from urlparse import urlparse
     import pil
     import auth
     import logger
