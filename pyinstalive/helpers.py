@@ -36,7 +36,7 @@ def strdatetime_compat():
 def command_exists(command):
     try:
         fnull = open(os.devnull, 'w')
-        subprocess.call([command], stdout=fnull, stderr=subprocess.STDOUT)
+        subprocess.call([command], stdout=fnull, stderr=fnull)
         return True
     except OSError:
         return False
