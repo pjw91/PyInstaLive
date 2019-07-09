@@ -1,32 +1,26 @@
+from __future__ import absolute_import
+
 import argparse
 import configparser
-import os
 import logging
+import os
 import platform
-import subprocess
 
 try:
     from urlparse import urlparse
-    import pil
-    import auth
-    import logger
-    import helpers
-    import downloader
-    import assembler
-    import dlfuncs
-    from constants import Constants
-    import organize
 except ImportError:
     from urllib.parse import urlparse
-    from . import pil
-    from . import auth
-    from . import logger
-    from . import helpers
-    from . import downloader
-    from . import assembler
-    from . import dlfuncs
-    from .constants import Constants
-    from . import organize
+
+from . import assembler
+from . import auth
+from . import dlfuncs
+from . import downloader
+from . import helpers
+from . import logger
+from . import organize
+from . import pil
+from .constants import Constants
+
 
 def validate_inputs(config, args, unknown_args):
     error_arr = []

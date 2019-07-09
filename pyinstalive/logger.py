@@ -1,14 +1,11 @@
+from __future__ import absolute_import
+
 import os
 import sys
 
-try:
-    import pil
-    import helpers
-    from constants import Constants
-except ImportError:
-    from . import pil
-    from . import helpers
-    from .constants import Constants
+from . import helpers
+from . import pil
+from .constants import Constants
 
 
 def supports_color():

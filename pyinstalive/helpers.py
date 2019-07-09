@@ -1,21 +1,16 @@
-import time
-import subprocess
-import os
-import shutil
-import json
-import shlex
-import sys
+from __future__ import absolute_import
 
-try:
-    import pil
-    import helpers
-    import logger
-    from constants import Constants
-except ImportError:
-    from . import pil
-    from . import helpers
-    from . import logger
-    from .constants import Constants
+import json
+import os
+import shlex
+import shutil
+import subprocess
+import sys
+import time
+
+from . import logger
+from . import pil
+from .constants import Constants
 
 
 def strdatetime():

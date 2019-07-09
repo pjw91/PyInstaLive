@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
+from __future__ import absolute_import
 
 import codecs
 import json
 import sys
 import time
-import os
-
 from socket import error as SocketError
 from socket import timeout
 from ssl import SSLError
@@ -19,19 +18,11 @@ except ImportError:
     from urllib.error import URLError
     from http.client import HTTPException
 
-
-try:
-    import logger
-    import helpers
-    import pil
-    import dlfuncs
-except ImportError:
-    from . import logger
-    from . import helpers
-    from . import pil
-    from . import dlfuncs
-
 from instagram_private_api import ClientError
+
+from . import logger
+from . import pil
+
 
 """
 The content of this file was originally written by https://github.com/taengstagram

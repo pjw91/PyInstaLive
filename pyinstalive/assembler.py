@@ -1,20 +1,14 @@
-import os
-import shutil
-import re
+from __future__ import absolute_import
+
 import glob
-import subprocess
 import json
-import sys
-try:
-    import pil
-    import logger
-    import helpers
-    from constants import Constants
-except ImportError:
-    from . import pil
-    from . import logger
-    from . import helpers
-    from .constants import Constants
+import os
+import re
+import shutil
+import subprocess
+
+from . import logger
+from . import pil
 
 """
 The content of this file was originally written by https://github.com/taengstagram

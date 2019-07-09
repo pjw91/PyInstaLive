@@ -1,10 +1,8 @@
-try:
-    import logger
-    import helpers
-except ImportError:
-    from . import logger
-    from . import helpers
+from __future__ import absolute_import
+
 import os
+
+from . import helpers
 
 
 def noinit(self):

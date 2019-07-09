@@ -1,13 +1,9 @@
-try:
-    import logger
-    import helpers
-    import pil
-    import dlfuncs
-except ImportError:
-    from . import logger
-    from . import helpers
-    from . import pil
-    from . import dlfuncs
+from __future__ import absolute_import
+
+from . import dlfuncs
+from . import helpers
+from . import logger
+from . import pil
 
 
 def start():

@@ -1,13 +1,12 @@
+from __future__ import absolute_import
+
 import os
 import shutil
 from datetime import datetime
 import time
-try:
-    import pil
-    import logger
-except ImportError:
-    from . import pil
-    from . import logger
+
+from . import logger
+from . import pil
 
 def organize_videos():
 

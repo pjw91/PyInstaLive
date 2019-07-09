@@ -1,27 +1,23 @@
+from __future__ import absolute_import
+
 import codecs
 import datetime
 import json
 import os.path
 import sys
 
-try:
-    import logger
-    import helpers
-    import pil
-except ImportError:
-    from . import logger
-    from . import helpers
-    from . import pil
+from . import logger
+from . import pil
 
 try:
     from instagram_private_api import (
         Client, ClientError, ClientLoginError,
-        ClientCookieExpiredError, ClientLoginRequiredError)
+        ClientCookieExpiredError)
 except ImportError:
     sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
     from instagram_private_api import (
         Client, ClientError, ClientLoginError,
-        ClientCookieExpiredError, ClientLoginRequiredError)
+        ClientCookieExpiredError)
 
 
 def to_json(python_object):

@@ -1,9 +1,9 @@
-import os
-import shutil
+from __future__ import absolute_import
+
 import json
+import os
 import threading
 import time
-
 from xml.dom.minidom import parseString
 
 from instagram_private_api import ClientConnectionError
@@ -12,22 +12,11 @@ from instagram_private_api import ClientThrottledError
 from instagram_private_api_extensions import live
 from instagram_private_api_extensions import replay
 
-try:
-    import logger
-    import helpers
-    import pil
-    import dlfuncs
-    import assembler
-    from constants import Constants
-    from comments import CommentsDownloader
-except ImportError:
-    from . import logger
-    from . import helpers
-    from . import pil
-    from . import assembler
-    from . import dlfuncs
-    from .constants import Constants
-    from .comments import CommentsDownloader
+from . import assembler
+from . import helpers
+from . import logger
+from . import pil
+from .comments import CommentsDownloader
 
 
 def get_stream_duration(duration_type):
